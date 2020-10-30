@@ -1,0 +1,66 @@
+schema {
+    query: Query
+    subscription: Subscription
+    mutation: Mutation
+}
+
+type Subscription
+
+type Mutation {
+    createUserReview(userId: String!, review: CreateUserReviewInput!): UserReview
+}
+
+type Query {
+    products(
+        ids: [String]!
+    ): [Product]
+    users(
+        ids: [String]!
+    ): [User]
+}
+
+input CreateUserReviewInput {
+    stars:  Int!
+    commentary: String
+}
+
+type UserReview  {
+    stars:  Int!
+    commentary: String
+    date: DateTime
+    responses: String
+}
+
+type Status  {
+    paid: Boolean
+    expiration: DateTime
+}
+
+type User {
+    id: ID!
+    name: String
+    description: String
+    email: String
+    attributes: [Attribute]
+}
+
+type Attribute  {
+    key: String
+    value: String
+}
+
+type Product {
+    id: ID!
+    description: String
+    price: Int
+    brand: String
+    size: Size
+}
+
+enum Size {
+    SMALL, MEDIUM, LARGE
+}
+
+
+scalar Long
+scalar DateTime
