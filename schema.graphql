@@ -55,6 +55,7 @@ type Product {
     price: Int
     brand: String
     size: Size
+    stock: Int
 }
 
 enum Size {
